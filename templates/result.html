@@ -1,0 +1,192 @@
+{% extends 'layout.html' %} {% block title %}Loan Prediction - Results{%
+endblock %} {% block extra_head %}
+<style>
+  /* Match navbar styling with other pages */
+  .navbar {
+    background: var(--glass-bg) !important;
+  }
+
+  .navbar-brand,
+  .nav-link {
+    color: var(--text-color) !important;
+  }
+
+  .nav-link:hover {
+    color: var(--primary-color) !important;
+  }
+
+  /* Make the logo have the same gradient as other pages */
+  .navbar-brand {
+    background: linear-gradient(
+      90deg,
+      var(--primary-color),
+      var(--accent-color)
+    ) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  /* Override the footer style to match other pages */
+  footer.footer {
+    background: var(--glass-bg) !important;
+    border-top: 1px solid var(--border-color) !important;
+  }
+</style>
+{% endblock %} {% block content %}
+<!-- Removing the redundant navbar since it's already in layout.html -->
+
+<main class="container">
+  <div class="glass-card neo-card" style="max-width: 900px; margin: 3rem auto">
+    <div class="prediction-result fade-in">
+      <h1>Loan Prediction Results for {{ name }}</h1>
+
+      <div
+        class="prediction-badge {% if prediction %}approved{% else %}denied{% endif %}"
+      >
+        {% if prediction %} APPROVAL LIKELY {% else %} APPROVAL UNLIKELY {%
+        endif %}
+      </div>
+
+      <p>
+        Based on our AI-driven analysis, we estimate your loan approval
+        probability at:
+      </p>
+
+      <div
+        style="font-size: 2.5rem; font-weight: 700; margin: 1rem 0"
+        class="scroll-animation"
+      >
+        <span class="animate-counter" data-target="{{ probability }}">0</span>%
+      </div>
+
+      <div class="probability-bar">
+        <div
+          class="probability-fill"
+          data-value="{{ probability }}"
+          style="width: 0%"
+        ></div>
+      </div>
+
+      <script>
+        // Ensure the probability bar fills to the correct percentage
+        document.addEventListener("DOMContentLoaded", function () {
+          const probabilityFill = document.querySelector(".probability-fill");
+          if (probabilityFill) {
+            const value = parseInt(probabilityFill.getAttribute("data-value"));
+            setTimeout(() => {
+              probabilityFill.style.width = `${value}%`;
+            }, 500);
+          }
+        });
+      </script>
+
+      {% if prediction %}
+      <p style="margin-top: 2rem">
+        Good news! Based on your profile, we've identified the following loan
+        options from top Indian banks:
+      </p>
+      {% else %}
+      <p style="margin-top: 2rem">
+        Based on your profile, your options may be limited. Consider improving
+        your CIBIL score or adjusting your loan amount.
+      </p>
+      {% endif %}
+    </div>
+
+    {% if banks|length > 0 %}
+    <h2 style="margin-top: 3rem; text-align: center" class="fade-in">
+      Eligible Loan Options
+    </h2>
+    <div class="bank-cards fade-in">
+      {% for bank in banks %}
+      <div class="bank-card floating neo-element">
+        <div class="bank-logo">{{ bank.logo | safe }}</div>
+        <h3>{{ bank.name }}</h3>
+        <div class="interest-rate">{{ bank.interest }}%</div>
+        <p>Annual interest rate</p>
+        <div class="loan-details">
+          <span class="loan-feature"
+            >Processing Fee: {{ bank.processing_fee }}%</span
+          >
+          <span class="loan-feature">Tenure: {{ bank.tenure }}</span>
+        </div>
+        <div style="margin-top: 1.5rem">
+          <a
+            href="{{ bank.website_url }}"
+            class="btn glow-btn"
+            style="display: block; text-align: center; text-decoration: none"
+            target="_blank"
+            >Apply Now</a
+          >
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div style="text-align: center; margin-top: 3rem" class="fade-in">
+      <p>No eligible loan options found based on your current profile.</p>
+      <a
+        href="/predict"
+        class="btn glow-btn"
+        style="display: inline-block; margin-top: 1rem"
+        >Try Different Parameters</a
+      >
+    </div>
+    {% endif %}
+
+    <div style="text-align: center; margin-top: 3rem">
+      <a href="/predict" class="btn fade-in">Make Another Prediction</a>
+    </div>
+  </div>
+</main>
+
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Result card animation
+    gsap.from(".result-card", { duration: 0.8, opacity: 0, y: 30 });
+
+    // Result content animations
+    gsap.from(".result-icon", {
+      duration: 1,
+      opacity: 0,
+      scale: 0.5,
+      delay: 0.3,
+    });
+    gsap.from(".result-title, .result-message", {
+      duration: 0.8,
+      opacity: 0,
+      y: 20,
+      stagger: 0.2,
+      delay: 0.5,
+    });
+
+    // Progress bar animation
+    gsap.from(".progress-bar", {
+      duration: 1.5,
+      width: 0,
+      delay: 0.8,
+      ease: "power2.out",
+    });
+
+    // Bank offers or tips animation
+    gsap.from(".bank-card, .list-group-item", {
+      duration: 0.5,
+      opacity: 0,
+      y: 15,
+      stagger: 0.1,
+      delay: 1.2,
+    });
+
+    // Buttons animation
+    gsap.from(".mt-4 .btn", {
+      duration: 0.5,
+      opacity: 0,
+      y: 10,
+      stagger: 0.2,
+      delay: 1.5,
+    });
+  });
+</script>
+{% endblock %}

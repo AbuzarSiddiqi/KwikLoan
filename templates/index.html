@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Future Loan Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/" class="logo">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2L2 7L12 12L22 7L12 2Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2 17L12 22L22 17"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2 12L12 17L22 12"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>KwikLoan</span>
+        </a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/predict">Get Prediction</a>
+          <a href="/about">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section
+        class="hero"
+        style="background: var(--background-color); color: var(--text-color)"
+      >
+        <div class="parallax" data-speed="0.2">
+          <svg
+            class="floating"
+            width="200"
+            height="200"
+            viewBox="0 0 200 200"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style="position: absolute; top: 20%; left: 10%; opacity: 0.1"
+          >
+            <circle cx="100" cy="100" r="100" fill="url(#paint0_linear)" />
+            <defs>
+              <linearGradient
+                id="paint0_linear"
+                x1="0"
+                y1="0"
+                x2="200"
+                y2="200"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#3A86FF" />
+                <stop offset="1" stop-color="#8338EC" />
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <svg
+            class="floating"
+            width="150"
+            height="150"
+            viewBox="0 0 150 150"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style="
+              position: absolute;
+              bottom: 15%;
+              right: 15%;
+              opacity: 0.1;
+              animation-delay: 0.5s;
+            "
+          >
+            <circle cx="75" cy="75" r="75" fill="url(#paint1_linear)" />
+            <defs>
+              <linearGradient
+                id="paint1_linear"
+                x1="0"
+                y1="0"
+                x2="150"
+                y2="150"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#FF006E" />
+                <stop offset="1" stop-color="#8338EC" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <h1 class="fade-in">Predict Your Loan Approval</h1>
+        <p class="fade-in">
+          Using advanced AI algorithms to assess your loan eligibility across
+          multiple financial institutions in seconds.
+        </p>
+        <a href="/predict" class="btn fade-in">Get Started</a>
+      </section>
+
+      <section class="container">
+        <div class="glass-card scroll-animation">
+          <h2>How It Works</h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+              gap: 2rem;
+              margin-top: 2rem;
+            "
+          >
+            <div class="fade-in" style="text-align: center">
+              <div
+                style="
+                  font-size: 2rem;
+                  margin-bottom: 1rem;
+                  color: var(--primary-color);
+                "
+              >
+                01
+              </div>
+              <h3>Enter Your Details</h3>
+              <p>
+                Provide basic information about yourself and your loan
+                requirements.
+              </p>
+            </div>
+            <div class="fade-in" style="text-align: center">
+              <div
+                style="
+                  font-size: 2rem;
+                  margin-bottom: 1rem;
+                  color: var(--secondary-color);
+                "
+              >
+                02
+              </div>
+              <h3>AI Analysis</h3>
+              <p>
+                Our advanced machine learning model analyzes your eligibility
+                across parameters.
+              </p>
+            </div>
+            <div class="fade-in" style="text-align: center">
+              <div
+                style="
+                  font-size: 2rem;
+                  margin-bottom: 1rem;
+                  color: var(--accent-color);
+                "
+              >
+                03
+              </div>
+              <h3>Get Your Results</h3>
+              <p>
+                Receive instant feedback on your eligibility and matching bank
+                offers.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card scroll-animation">
+          <h2>Why Choose Us</h2>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: 2rem;
+              margin-top: 2rem;
+            "
+          >
+            <div class="fade-in">
+              <h3>AI-Powered Accuracy</h3>
+              <p>
+                Our machine learning algorithms ensure precise prediction of
+                loan approval chances based on real-world data.
+              </p>
+            </div>
+            <div class="fade-in">
+              <h3>Multi-Bank Comparison</h3>
+              <p>
+                Compare loan offers from multiple financial institutions side by
+                side and choose the best fit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      style="
+        background: var(--glass-bg);
+        padding: 0.5rem 0;
+        margin-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.8rem;
+      "
+    >
+      <div class="container text-center">
+        <p class="small mb-0">© 2025 ABUZAR. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

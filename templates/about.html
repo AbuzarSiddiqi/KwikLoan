@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KwikLoan - About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/" class="logo">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2L2 7L12 12L22 7L12 2Z"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2 17L12 22L22 17"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M2 12L12 17L22 12"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>KwikLoan</span>
+        </a>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/predict">Get Prediction</a>
+          <a href="/about">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <div
+        class="glass-card neo-card"
+        style="max-width: 800px; margin: 3rem auto"
+      >
+        <h1 class="fade-in" style="text-align: center; margin-bottom: 2rem">
+          About KwikLoan
+        </h1>
+
+        <div class="fade-in">
+          <p
+            class="lead"
+            style="font-size: 1.2rem; margin-bottom: 2rem; text-align: center"
+          >
+            KwikLoan is an AI-powered platform that helps individuals determine
+            their loan eligibility before applying to banks.
+          </p>
+
+          <h2>How It Works</h2>
+          <p>
+            Our platform uses machine learning algorithms to analyze your
+            financial information and predict the likelihood of loan approval.
+            By analyzing patterns from thousands of loan applications, our model
+            can accurately estimate your chances.
+          </p>
+
+          <h2 style="margin-top: 2rem">Our Technology</h2>
+          <p>
+            We've built our prediction system using state-of-the-art machine
+            learning techniques. The model considers various factors including:
+          </p>
+          <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem">
+            <li>Age and income level</li>
+            <li>Employment status and stability</li>
+            <li>Credit score and history</li>
+            <li>Loan amount relative to income</li>
+            <li>Purpose of the loan</li>
+          </ul>
+
+          <h2 style="margin-top: 2rem">Privacy & Security</h2>
+          <p>
+            We prioritize your privacy. All predictions are made instantly
+            without storing your personal information. Your data is processed
+            in-memory and never saved to any database.
+          </p>
+
+          <h2 style="margin-top: 2rem">Disclaimer</h2>
+          <p>
+            This prediction tool provides estimates based on general lending
+            patterns and is for educational purposes only. Actual loan approvals
+            depend on the specific criteria of financial institutions and may
+            vary.
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem">
+          <a href="/predict" class="btn pulse-btn fade-in">Try Our Predictor</a>
+        </div>
+      </div>
+    </main>
+
+    <footer
+      style="
+        background: var(--glass-bg);
+        padding: 0.5rem 0;
+        margin-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.8rem;
+      "
+    >
+      <div class="container text-center">
+        <p class="small mb-0">© 2025 ABUZAR. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
